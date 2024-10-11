@@ -18,10 +18,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.rushabhg5.exponav"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "98240eaf-5435-498e-8315-957312be35e3"
+      }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
