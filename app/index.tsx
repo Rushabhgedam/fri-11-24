@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, StyleSheet, Text, TextInput, TextInputBase, View } from 'react-native'
 import React, { useContext } from 'react'
 import { router } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
@@ -9,20 +9,20 @@ import UserContext from './context/UserContext'
 
 const index = () => {
 
-  const { userName, setUserName } = useContext(UserContext)
+  const counter = useSelector((state: RootState) => state.counter)
+  const dispatch = useDispatch();
+
+
+  console.log("counter from redux", counter)
 
   return (
     <View style={{ flex: 1, justifyContent: "center" }}>
       <StatusBar />
-      <TextInput
-        value={userName}
-        onChangeText={(t) => setUserName?.(t)}
-        style={{
-          borderWidth: 1,
-          paddingVertical: 10
-        }}
-      />
-      <Button onPress={() => router.push("/home")} title='Go to home' />
+      <Button onPress={() => dispatch(increment())} title='Increment' />
+      <Button onPress={() => dispatch({ type: "INCREMENT", payload: { by: 10 } })}
+      title='Increment by 10' />
+      <Button onPress={() => dispatch(decrement())} title='Decrement' />
+      <Text>{counter}</Text>
     </View>
   )
 }

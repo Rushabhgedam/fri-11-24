@@ -4,10 +4,10 @@ import store from "./redux/store";
 import UserProvider from "./context/UserProvider";
 
 const MainApplication = () => (
-    <UserProvider >
+    <Provider store={store}>
         <Stack screenOptions={{
-            headerShown: false
+            headerShown: true
         }} />
-    </UserProvider>)
+    </Provider>)
 
 export default MainApplication
